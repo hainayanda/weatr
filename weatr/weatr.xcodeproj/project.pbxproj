@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C0C68104BC6E72F730565AA /* Pods_weatrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82910C430FB7F31C09A09D3 /* Pods_weatrTests.framework */; };
 		19BDD727224FE2AA8BB1949B /* Pods_weatr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D290521C47A87DE3077B6F7 /* Pods_weatr.framework */; };
+		BB2199332157F2B300572546 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */; };
 		BB7D2F1E21567BBD00D89D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */; };
 		BB7D2F2521567BBE00D89D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2421567BBE00D89D16 /* Assets.xcassets */; };
 		BB7D2F2821567BBE00D89D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2621567BBE00D89D16 /* LaunchScreen.storyboard */; };
@@ -29,6 +30,10 @@
 		BB7D2F6D2157802400D89D16 /* WeatherAPIManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F6C2157802400D89D16 /* WeatherAPIManagerTest.swift */; };
 		BB7D2F7121579C2200D89D16 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F7021579C2200D89D16 /* CGSizeExtension.swift */; };
 		BB7D2F7421579F2F00D89D16 /* PlaceAPIManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F7321579F2F00D89D16 /* PlaceAPIManagerTest.swift */; };
+		BB7D2F762157A3A000D89D16 /* HourlyForecastTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F752157A3A000D89D16 /* HourlyForecastTableCell.swift */; };
+		BB7D2F7A2157A8B600D89D16 /* HourlyForecastCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F792157A8B600D89D16 /* HourlyForecastCollectionCell.swift */; };
+		BB7D2F7C2157B90300D89D16 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F7B2157B90300D89D16 /* Utilities.swift */; };
+		BB7D2F7E2157E10800D89D16 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F7D2157E10800D89D16 /* UIViewExtension.swift */; };
 		EB08424E250F925E0C04258E /* Pods_weatrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7AA6F7F29D26B3970A3DB3 /* Pods_weatrUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +61,7 @@
 		6D290521C47A87DE3077B6F7 /* Pods_weatr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A3E7F4C3B9502EF4AC5B52 /* Pods-weatr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatr.release.xcconfig"; path = "Target Support Files/Pods-weatr/Pods-weatr.release.xcconfig"; sourceTree = "<group>"; };
 		B2E9B850024A082BC8542BAD /* Pods-weatr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatr.debug.xcconfig"; path = "Target Support Files/Pods-weatr/Pods-weatr.debug.xcconfig"; sourceTree = "<group>"; };
+		BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		BB7D2F1A21567BBD00D89D16 /* weatr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7D2F2421567BBE00D89D16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +88,10 @@
 		BB7D2F6C2157802400D89D16 /* WeatherAPIManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIManagerTest.swift; sourceTree = "<group>"; };
 		BB7D2F7021579C2200D89D16 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
 		BB7D2F7321579F2F00D89D16 /* PlaceAPIManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAPIManagerTest.swift; sourceTree = "<group>"; };
+		BB7D2F752157A3A000D89D16 /* HourlyForecastTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastTableCell.swift; sourceTree = "<group>"; };
+		BB7D2F792157A8B600D89D16 /* HourlyForecastCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionCell.swift; sourceTree = "<group>"; };
+		BB7D2F7B2157B90300D89D16 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		BB7D2F7D2157E10800D89D16 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CA935A97EE7EDB458BD09740 /* Pods-weatrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatrUITests.debug.xcconfig"; path = "Target Support Files/Pods-weatrUITests/Pods-weatrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ECBC29FDB3E46B761A99B440 /* Pods-weatrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatrTests.debug.xcconfig"; path = "Target Support Files/Pods-weatrTests/Pods-weatrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F82910C430FB7F31C09A09D3 /* Pods_weatrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7D2F6F21579C1100D89D16 /* extension */,
+				BB7D2F7B2157B90300D89D16 /* Utilities.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -260,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7D2F7021579C2200D89D16 /* CGSizeExtension.swift */,
+				BB7D2F7D2157E10800D89D16 /* UIViewExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -267,8 +279,27 @@
 		BB7D2F7221579F0C00D89D16 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				BB7D2F782157A88D00D89D16 /* collection */,
+				BB7D2F772157A88700D89D16 /* table */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		BB7D2F772157A88700D89D16 /* table */ = {
+			isa = PBXGroup;
+			children = (
+				BB7D2F752157A3A000D89D16 /* HourlyForecastTableCell.swift */,
+				BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */,
+			);
+			path = table;
+			sourceTree = "<group>";
+		};
+		BB7D2F782157A88D00D89D16 /* collection */ = {
+			isa = PBXGroup;
+			children = (
+				BB7D2F792157A8B600D89D16 /* HourlyForecastCollectionCell.swift */,
+			);
+			path = collection;
 			sourceTree = "<group>";
 		};
 		FF0CCD9D09230776A6C36ABF /* Pods */ = {
@@ -518,9 +549,14 @@
 			files = (
 				BB7D2F6A21577D4300D89D16 /* PlaceAPIManager.swift in Sources */,
 				BB7D2F6021575A7B00D89D16 /* MainViewApiManager.swift in Sources */,
+				BB7D2F7A2157A8B600D89D16 /* HourlyForecastCollectionCell.swift in Sources */,
 				BB7D2F68215761A400D89D16 /* WeatherForecastSummary.swift in Sources */,
+				BB7D2F762157A3A000D89D16 /* HourlyForecastTableCell.swift in Sources */,
 				BB7D2F522156AF1F00D89D16 /* MainViewSetup.swift in Sources */,
+				BB2199332157F2B300572546 /* DailyForecastTableViewCell.swift in Sources */,
+				BB7D2F7C2157B90300D89D16 /* Utilities.swift in Sources */,
 				BB7D2F4D21567D7800D89D16 /* MainViewController.swift in Sources */,
+				BB7D2F7E2157E10800D89D16 /* UIViewExtension.swift in Sources */,
 				BB7D2F7121579C2200D89D16 /* CGSizeExtension.swift in Sources */,
 				BB7D2F582156BAC600D89D16 /* DateLabelHelper.swift in Sources */,
 				BB7D2F6221575CEA00D89D16 /* ForecastModel.swift in Sources */,

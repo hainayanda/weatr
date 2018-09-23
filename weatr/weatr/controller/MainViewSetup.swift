@@ -19,7 +19,7 @@ extension MainViewController {
         let tintLayer = UIView.init(frame: self.view.bounds)
         tintLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
-        let blurEffect = UIBlurEffect.init(style: .light)
+        let blurEffect = UIBlurEffect.init(style: .regular)
         let blurLayer = UIVisualEffectView.init(effect: blurEffect)
         blurLayer.frame = self.view.bounds
         blurLayer.alpha = 0
@@ -41,6 +41,8 @@ extension MainViewController {
         tableView.showsHorizontalScrollIndicator = false
         tableView.alwaysBounceHorizontal = false
         tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        
         self.view.addSubview(tableView)
         return tableView
     }
@@ -49,7 +51,7 @@ extension MainViewController {
         let container = UIView()
         container.backgroundColor = .clear
         container.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(container)
+        self.view.insertSubview(container, belowSubview: blurBackground)
         
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([

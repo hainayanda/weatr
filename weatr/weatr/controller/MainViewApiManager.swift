@@ -64,10 +64,12 @@ extension MainViewController : EatrDelegate {
             }
         }
         DispatchQueue.main.async {
+            self.tableOfContent.reloadData()
+            self.tableOfContent.contentOffset.y = -(self.view.frame.height - self.view.safeAreaInsets.bottom - self.firstCellHeight)
             if let timeNow : Int64 = json.currently?.time {
                 let date = Date.init(timeIntervalSince1970: (TimeInterval(timeNow)))
                 let formatter = DateFormatter()
-                formatter.dateFormat = "dd MMM, hh.mm"
+                formatter.dateFormat = "dd MMM, hh.mma"
                 let dateStr = formatter.string(from: date)
                 self.navigationBar.topItem?.title = "updated on \(dateStr)"
             }
@@ -76,7 +78,7 @@ extension MainViewController : EatrDelegate {
             let temperature = json.currently?.temperature
             self.temperatureLabel.text = temperature == nil ? "No Data" : "\(Int(temperature!))°"
             if let iconStr : String = json.currently?.icon {
-                self.weatherIcon.image = self.iconSelector(from: iconStr, date: json.currently?.time != nil ? Date.init(timeIntervalSince1970: (TimeInterval((json.currently?.time)!))) : Date())
+                self.weatherIcon.image = Utilities.iconSelector(from: iconStr, date: json.currently?.time != nil ? Date.init(timeIntervalSince1970: (TimeInterval((json.currently?.time)!))) : Date())
             }
             
         }
@@ -89,36 +91,6 @@ extension MainViewController : EatrDelegate {
             }) { (_) in
                 self.labelLoadingView.stopAnimating()
             }
-        }
-    }
-    
-    func iconSelector(from str : String, date: Date) -> UIImage {
-        let hour = Calendar.current.component(.hour, from: date)
-        switch str {
-        case "clear-day":
-            return #imageLiteral(resourceName: "ic_clear_day")
-        case "clear-night" :
-            return #imageLiteral(resourceName: "ic_clear_night")
-        case "rain" :
-            return #imageLiteral(resourceName: "ic_rain")
-        case "snow" :
-            return #imageLiteral(resourceName: "ic_snow")
-        case "sleet" :
-            return #imageLiteral(resourceName: "ic_sleet")
-        case "wind" :
-            return #imageLiteral(resourceName: "ic_wind")
-        case "fog" :
-            return hour > 18 && hour < 6 ? #imageLiteral(resourceName: "ic_fog_night") : #imageLiteral(resourceName: "ic_fog_day")
-        case "partly-cloudy-day":
-            return #imageLiteral(resourceName: "ic_partly_cloudy_day")
-        case "partly-cloudy-night" :
-            return #imageLiteral(resourceName: "ic_partly_cloudy_night")
-        case "thunderstorm" :
-            return #imageLiteral(resourceName: "ic_thunderstorm")
-        case "tornado" :
-            return #imageLiteral(resourceName: "ic_tornado")
-        default:
-            return #imageLiteral(resourceName: "ic_cloudy")
         }
     }
     

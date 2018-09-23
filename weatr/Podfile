@@ -10,7 +10,7 @@ target 'weatr' do
   pod 'Nativefier'
   
   pod 'HandyJSON'
-  
+  pod 'GooglePlaces'
   # Pods for weatr
 
   target 'weatrTests' do

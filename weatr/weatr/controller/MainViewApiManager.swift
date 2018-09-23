@@ -11,20 +11,45 @@ import Eatr
 
 extension MainViewController : EatrDelegate {
     
+    func loadPlacePicture(placeName : String){
+        placeApiManager.getPhoto(of: placeName) { (image, e) in
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.loadingView.alpha = 0
+                }) { (_) in
+                    self.loadingView.stopAnimating()
+                }
+            }
+            guard let image : UIImage = image else {
+                //SHOW FAILED MESSAGE
+                return;
+            }
+            DispatchQueue.main.async {
+                self.background.image = image
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.blurBackground.alpha = 0
+                })
+            }
+        }
+    }
+    
     func eatrOnBeforeSending(_ sessionToSend: URLSession) -> URLSession {
         labelLoadingView.startAnimating()
+        loadingView.startAnimating()
         UIView.animate(withDuration: 0.2) {
+            self.loadingView.alpha = 1
+            self.blurBackground.alpha = 1
             self.labelLoadingView.alpha = 1
         }
         return sessionToSend
     }
     
     func eatrOnTimeout() {
-        
+        // SHOW FAILED MESSAGE
     }
     
     func eatrOnError(_ error: Error) {
-        
+        // SHOW FAILED MESSAGE
     }
     
     func eatrOnResponded(_ response: EatrResponse) {
@@ -32,6 +57,12 @@ extension MainViewController : EatrDelegate {
             return
         }
         self.lastForecast = json
+        let place = json.timezone?.components(separatedBy: "/")[1]
+        if let place : String = place {
+            DispatchQueue.main.async {
+                self.loadPlacePicture(placeName: place)
+            }
+        }
         DispatchQueue.main.async {
             if let timeNow : Int64 = json.currently?.time {
                 let date = Date.init(timeIntervalSince1970: (TimeInterval(timeNow)))
@@ -40,7 +71,7 @@ extension MainViewController : EatrDelegate {
                 let dateStr = formatter.string(from: date)
                 self.navigationBar.topItem?.title = "updated on \(dateStr)"
             }
-            self.cityLabel.text = json.timezone?.components(separatedBy: "/")[1]
+            self.cityLabel.text = place
             self.weatherLabel.text = json.currently?.summary
             let temperature = json.currently?.temperature
             self.temperatureLabel.text = temperature == nil ? "No Data" : "\(Int(temperature!))°"

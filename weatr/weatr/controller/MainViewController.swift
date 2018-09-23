@@ -29,6 +29,7 @@ class MainViewController : UIViewController  {
     // CONSTANT
     
     let weatherApiManager = WeatherAPIManager.sharedInstance
+    let placeApiManager = PlaceAPIManager.sharedInstance
     let defaultLocation = CLLocationCoordinate2D.init(latitude: -6.21462, longitude: 106.84513) //JAKARTA
     let firstCellHeight : CGFloat = 120
     let locationManager = CLLocationManager()

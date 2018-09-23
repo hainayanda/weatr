@@ -13,7 +13,11 @@ extension MainViewController {
     
     func createImageBackground() -> (UIImageView, UIVisualEffectView, UIActivityIndicatorView) {
         let imageView = UIImageView.init(frame: self.view.bounds)
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = UIColor.gray
+        
+        let tintLayer = UIView.init(frame: self.view.bounds)
+        tintLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
         let blurEffect = UIBlurEffect.init(style: .light)
         let blurLayer = UIVisualEffectView.init(effect: blurEffect)
@@ -25,6 +29,7 @@ extension MainViewController {
         activityIndicator.alpha = 0
         
         self.view.addSubview(imageView)
+        self.view.addSubview(tintLayer)
         self.view.addSubview(blurLayer)
         self.view.addSubview(activityIndicator)
         return (imageView, blurLayer, activityIndicator)

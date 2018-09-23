@@ -34,6 +34,7 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
     let firstCellHeight : CGFloat = 120
     let locationManager = CLLocationManager()
     let hourlyCellId = "hourlyCellId"
+    let dailyCellId = "dailyCellId"
     
     // VARIABLE
     var unit : Unit = .metric
@@ -62,8 +63,7 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
         super.viewDidLayoutSubviews()
         
         let topInset = self.view.frame.height - self.view.safeAreaInsets.bottom - firstCellHeight
-        let bottomInset = self.view.frame.height > tableOfContent.contentSize.height ? self.view.frame.height - tableOfContent.contentSize.height + self.view.safeAreaInsets.bottom - 44 - self.view.safeAreaInsets.top: self.view.safeAreaInsets.bottom - 44 - self.view.safeAreaInsets.top
-        self.tableOfContent.contentInset = UIEdgeInsets.init(top: topInset, left: 0, bottom: bottomInset, right: 0)
+        self.tableOfContent.contentInset = UIEdgeInsets.init(top: topInset, left: 0, bottom: self.view.safeAreaInsets.bottom, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,16 +89,27 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
     // TABLEVIEW DATASOURCE & DELEGATE
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lastForecast?.hourly?.data != nil ? 1 : 0
+        return lastForecast?.hourly?.data != nil ? (lastForecast?.daily?.data != nil ? lastForecast!.daily!.data!.count + 1 : 1) : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: hourlyCellId, for: indexPath) as! HourlyForecastTableCell
-        if let data : [Weather] = lastForecast?.hourly?.data {
-            cell.apply(using: data)
+        if indexPath.item == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: hourlyCellId, for: indexPath) as! HourlyForecastTableCell
+            if let data : [Weather] = lastForecast?.hourly?.data {
+                cell.apply(using: data)
+            }
+            cell.backgroundColor = .clear
+            return cell
         }
-        cell.backgroundColor = .clear
-        return cell
+        else {
+            let index = indexPath.item - 1
+            let cell = tableView.dequeueReusableCell(withIdentifier: dailyCellId, for: indexPath) as! DailyForecastTableViewCell
+            if let data : [DailyWeather] = lastForecast?.daily?.data, data.count > index {
+                cell.apply(using: data[index])
+            }
+            cell.backgroundColor = .clear
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -106,30 +117,7 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
     }
     
     //SCROLLVIEW DELEGATE
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let maxDistance = -(self.view.frame.height - self.view.safeAreaInsets.bottom - firstCellHeight)
-        let percent = 1 - (scrollView.contentOffset.y / maxDistance)
-        if isUp && percent >= 0.2 {
-            UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .curveEaseInOut, animations: {
-                scrollView.contentOffset = CGPoint.init(x: 0, y: -44 - self.view.safeAreaInsets.top)
-            }, completion: nil)
-        }
-        else {
-            UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .curveEaseInOut, animations: {
-                scrollView.contentOffset = CGPoint.init(x: 0, y: maxDistance)
-            }, completion: nil)
-        }
-    }
-    
-    var isUp = false
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-        if translation.y > 0 {
-            isUp = false
-        } else {
-            isUp = true
-        }
         let maxDistance = -(self.view.frame.height - self.view.safeAreaInsets.bottom - firstCellHeight)
         if scrollView.contentOffset.y >= maxDistance {
             var alpha : CGFloat = 0;
@@ -137,11 +125,12 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
                 alpha = 1
             }
             else if scrollView.contentOffset.y == maxDistance {
-                    alpha = 0
-                }
+                alpha = 0
+            }
             else {
                 alpha = 1 - (scrollView.contentOffset.y / maxDistance)
             }
+            navigationBar.alpha = 1 - alpha
             blurBackground.alpha = alpha
         }
     }
@@ -179,6 +168,7 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
         
         self.tableOfContent = createTableView()
         tableOfContent.register(HourlyForecastTableCell.self, forCellReuseIdentifier: hourlyCellId)
+        tableOfContent.register(DailyForecastTableViewCell.self, forCellReuseIdentifier: dailyCellId)
         tableOfContent.delegate = self
         tableOfContent.dataSource = self
         tableOfContent.delegate = self

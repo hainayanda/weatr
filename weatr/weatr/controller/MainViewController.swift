@@ -79,13 +79,42 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
     // SELECTOR
     
     @objc func onOptionsClicked(_ sender : UIBarButtonItem){
-        
+        self.showOptions(title: "Options", message: "Weather options", options: [
+            UIAlertAction.init(title: "Celcius", style: .default, handler: { (_) in
+                self.unit = .metric
+                if let location : CLLocationCoordinate2D = self.lastLocation {
+                    self.weatherApiManager.getForecast(in: location, unit: .metric, delegate: self)
+                }
+            }),
+            UIAlertAction.init(title: "Fahrenheit", style: .default, handler: { (_) in
+                self.unit = .imperial
+                if let location : CLLocationCoordinate2D = self.lastLocation {
+                    self.weatherApiManager.getForecast(in: location, unit: .imperial, delegate: self)
+                }
+            }),
+            UIAlertAction.init(title: "Download Picture", style: .destructive, handler: { (_) in
+                guard let image : UIImage = self.background.image else {
+                    self.showAlert(title: "Failed", message: "Failed to get image")
+                    return
+                }
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            }),
+            UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+            ])
     }
     
     @objc func onSearchClick(_ sender : UIBarButtonItem){
         let searchController = SearchViewController()
         searchController.modalPresentationStyle = .overCurrentContext
         present(searchController, animated: true, completion: nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let _ = error {
+            self.showAlert(title: "Failed", message: "Failed to save image to your photos")
+        } else {
+            self.showAlert(title: "Success", message: "Image saved successfully")
+        }
     }
     
     // TABLEVIEW DATASOURCE & DELEGATE

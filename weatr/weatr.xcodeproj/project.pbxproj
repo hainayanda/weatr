@@ -12,9 +12,10 @@
 		BB2199332157F2B300572546 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */; };
 		BB219935215801C300572546 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB219934215801C300572546 /* SearchViewController.swift */; };
 		BB2199372158106D00572546 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199362158106D00572546 /* SearchResultTableViewCell.swift */; };
+		BB2199392158203E00572546 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199382158203E00572546 /* UIViewControllerExtension.swift */; };
+		BB21993B215827CF00572546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB21993A215827CF00572546 /* LaunchScreen.storyboard */; };
 		BB7D2F1E21567BBD00D89D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */; };
 		BB7D2F2521567BBE00D89D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2421567BBE00D89D16 /* Assets.xcassets */; };
-		BB7D2F2821567BBE00D89D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2621567BBE00D89D16 /* LaunchScreen.storyboard */; };
 		BB7D2F3321567BBE00D89D16 /* weatrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F3221567BBE00D89D16 /* weatrTests.swift */; };
 		BB7D2F3E21567BBE00D89D16 /* weatrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F3D21567BBE00D89D16 /* weatrUITests.swift */; };
 		BB7D2F4D21567D7800D89D16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F4C21567D7800D89D16 /* MainViewController.swift */; };
@@ -66,10 +67,11 @@
 		BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		BB219934215801C300572546 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BB2199362158106D00572546 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		BB2199382158203E00572546 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		BB21993A215827CF00572546 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB7D2F1A21567BBD00D89D16 /* weatr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7D2F2421567BBE00D89D16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB7D2F2721567BBE00D89D16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB7D2F2921567BBE00D89D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB7D2F2E21567BBE00D89D16 /* weatrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7D2F3221567BBE00D89D16 /* weatrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatrTests.swift; sourceTree = "<group>"; };
@@ -171,8 +173,8 @@
 				BB7D2F4B21567D5800D89D16 /* controller */,
 				BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */,
 				BB7D2F2421567BBE00D89D16 /* Assets.xcassets */,
-				BB7D2F2621567BBE00D89D16 /* LaunchScreen.storyboard */,
 				BB7D2F2921567BBE00D89D16 /* Info.plist */,
+				BB21993A215827CF00572546 /* LaunchScreen.storyboard */,
 			);
 			path = weatr;
 			sourceTree = "<group>";
@@ -277,6 +279,7 @@
 			children = (
 				BB7D2F7021579C2200D89D16 /* CGSizeExtension.swift */,
 				BB7D2F7D2157E10800D89D16 /* UIViewExtension.swift */,
+				BB2199382158203E00572546 /* UIViewControllerExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -430,8 +433,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB7D2F2821567BBE00D89D16 /* LaunchScreen.storyboard in Resources */,
 				BB7D2F2521567BBE00D89D16 /* Assets.xcassets in Resources */,
+				BB21993B215827CF00572546 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +561,7 @@
 				BB7D2F7A2157A8B600D89D16 /* HourlyForecastCollectionCell.swift in Sources */,
 				BB7D2F68215761A400D89D16 /* WeatherForecastSummary.swift in Sources */,
 				BB219935215801C300572546 /* SearchViewController.swift in Sources */,
+				BB2199392158203E00572546 /* UIViewControllerExtension.swift in Sources */,
 				BB7D2F762157A3A000D89D16 /* HourlyForecastTableCell.swift in Sources */,
 				BB2199372158106D00572546 /* SearchResultTableViewCell.swift in Sources */,
 				BB7D2F522156AF1F00D89D16 /* MainViewSetup.swift in Sources */,
@@ -609,17 +613,6 @@
 			targetProxy = BB7D2F3A21567BBE00D89D16 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BB7D2F2621567BBE00D89D16 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB7D2F2721567BBE00D89D16 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BB7D2F4021567BBE00D89D16 /* Debug */ = {

@@ -24,7 +24,7 @@ extension MainViewController : EatrDelegate {
         placeApiManager.client.lookUpPlaceID(placeId) { (place, e) in
             guard let place : GMSPlace = place else {
                 DispatchQueue.main.async {
-                    // SHOW ERROR
+                    self.showAlert(title: "Failed", message: "Failed to get coordinate of location")
                     
                     UIView.animate(withDuration: 0.2, animations: {
                         self.labelLoadingView.alpha = 0
@@ -34,6 +34,7 @@ extension MainViewController : EatrDelegate {
                 }
                 return
             }
+            self.lastLocation = place.coordinate
             self.weatherApiManager.getForecast(in: place.coordinate, unit: self.unit, delegate: self)
         }
     }
@@ -48,7 +49,7 @@ extension MainViewController : EatrDelegate {
                 }
             }
             guard let image : UIImage = image else {
-                //SHOW FAILED MESSAGE
+                self.showAlert(title: "Failed", message: "Failed to get image of place")
                 return;
             }
             DispatchQueue.main.async {
@@ -72,11 +73,11 @@ extension MainViewController : EatrDelegate {
     }
     
     func eatrOnTimeout() {
-        // SHOW FAILED MESSAGE
+        self.showAlert(title: "Timeout", message: "Request Timeout")
     }
     
     func eatrOnError(_ error: Error) {
-        // SHOW FAILED MESSAGE
+        self.showAlert(title: "Failed", message: "Failed to get forecast of location")
     }
     
     func eatrOnResponded(_ response: EatrResponse) {

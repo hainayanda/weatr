@@ -137,9 +137,9 @@ extension MainViewController {
         let navItem = UINavigationItem()
         let dButton = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 36, height: 36))
         dButton.setImage(#imageLiteral(resourceName: "ic_options"), for: .normal)
-        dButton.imageEdgeInsets = UIEdgeInsets.init(top: 9, left: 0, bottom: 9, right: 23)
+        dButton.imageEdgeInsets = UIEdgeInsets.init(top: 9, left: 0, bottom: 9, right: 18)
         let drawerButton = UIBarButtonItem.init(customView: dButton)
-        dButton.addTarget(self, action: sAction, for: .touchUpInside)
+        dButton.addTarget(self, action: dAction, for: .touchUpInside)
         navItem.leftBarButtonItem = drawerButton
         
         let sButton = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 36, height: 36))

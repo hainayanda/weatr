@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import GooglePlaces
 
-class SearchViewController : UITableViewController, UISearchResultsUpdating {
+class SearchViewController : UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var searchController: UISearchController!
     
@@ -36,6 +36,10 @@ class SearchViewController : UITableViewController, UISearchResultsUpdating {
                 }
             }
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,7 +81,8 @@ class SearchViewController : UITableViewController, UISearchResultsUpdating {
         searchController.searchBar.isTranslucent = true
         searchController.searchBar.backgroundColor = .clear
         searchController.searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        
+        searchController.searchBar.delegate = self
+        searchController.searchBar.showsCancelButton = true
         self.tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.backgroundColor = .clear
         tableView.backgroundView = blurLayer

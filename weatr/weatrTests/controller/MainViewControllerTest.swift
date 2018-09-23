@@ -14,7 +14,7 @@ import XCTest
 class MainViewControllerTest: XCTestCase, MainViewControllerObserver {
     
     var mainViewController : MainViewController!
-    var dGroup : DispatchGroup = DispatchGroup.init()
+    let dGroup : DispatchGroup = DispatchGroup.init()
     
     override func setUp() {
         super.setUp()
@@ -30,7 +30,7 @@ class MainViewControllerTest: XCTestCase, MainViewControllerObserver {
         super.tearDown()
     }
     
-    func testExample() {
+    func testAllViewLoaded() {
         assert(mainViewController.background != nil)
         assert(mainViewController.blurBackground != nil)
         assert(mainViewController.cityLabel != nil)
@@ -40,6 +40,7 @@ class MainViewControllerTest: XCTestCase, MainViewControllerObserver {
         assert(mainViewController.weatherIcon != nil)
         assert(mainViewController.weatherLabel != nil)
         assert(mainViewController.weatherLabelsContainer != nil)
+        assert(mainViewController.dateLabel != nil)
     }
     
     func testPerformanceExample() {

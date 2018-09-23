@@ -11,16 +11,23 @@ import UIKit
 
 extension MainViewController {
     
-    func createImageBackground() -> (UIImageView, UIVisualEffectView) {
+    func createImageBackground() -> (UIImageView, UIVisualEffectView, UIActivityIndicatorView) {
         let imageView = UIImageView.init(frame: self.view.bounds)
         imageView.backgroundColor = UIColor.gray
+        
         let blurEffect = UIBlurEffect.init(style: .light)
         let blurLayer = UIVisualEffectView.init(effect: blurEffect)
         blurLayer.frame = self.view.bounds
         blurLayer.alpha = 0
+        
+        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.frame = self.view.bounds
+        activityIndicator.alpha = 0
+        
         self.view.addSubview(imageView)
         self.view.addSubview(blurLayer)
-        return (imageView, blurLayer)
+        self.view.addSubview(activityIndicator)
+        return (imageView, blurLayer, activityIndicator)
     }
     
     func createTableView() -> UITableView {
@@ -33,7 +40,7 @@ extension MainViewController {
         return tableView
     }
     
-    func createWeatherLabel() -> (UIView, UIImageView, UILabel, UILabel, UILabel) {
+    func createWeatherLabel() -> (UIView, UIImageView, UILabel, UILabel, UILabel, UILabel, UIActivityIndicatorView) {
         let container = UIView()
         container.backgroundColor = .clear
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -46,14 +53,51 @@ extension MainViewController {
             container.rightAnchor.constraint(equalTo: guide.rightAnchor)
             ])
         
+        let cityLabel = UILabel()
+        cityLabel.textColor = .white
+        cityLabel.text = "City"
+        cityLabel.font = UIFont.systemFont(ofSize: 18)
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(cityLabel)
+        NSLayoutConstraint.activate([
+            cityLabel.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 18),
+            container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: cityLabel.rightAnchor, constant : 9),
+            cityLabel.topAnchor.constraint(equalTo: container.layoutMarginsGuide.topAnchor)
+            ])
+        
+        let dateLabel = UILabel()
+        dateLabel.textColor = .white
+        dateLabel.text = "dd MMM yyyy : hh.mm"
+        dateLabel.font = UIFont.systemFont(ofSize: 16)
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(dateLabel)
+        NSLayoutConstraint.activate([
+            dateLabel.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 18),
+            container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: dateLabel.rightAnchor, constant : 9),
+            dateLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor)
+            ])
+        
+        let temperatureLabel = UILabel()
+        temperatureLabel.textColor = .white
+        temperatureLabel.text = "0°"
+        temperatureLabel.font = UIFont.systemFont(ofSize: 135)
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(temperatureLabel)
+        NSLayoutConstraint.activate([
+            temperatureLabel.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 9),
+            container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: temperatureLabel.rightAnchor, constant : 9),
+            temperatureLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant : -18)
+            ])
+        
         let weatherIcon = UIImageView.init(image: #imageLiteral(resourceName: "ic_clear_day"))
         weatherIcon.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(weatherIcon)
         NSLayoutConstraint.activate([
             weatherIcon.heightAnchor.constraint(equalToConstant: 36),
             weatherIcon.widthAnchor.constraint(equalToConstant: 36),
-            weatherIcon.topAnchor.constraint(equalTo: container.layoutMarginsGuide.topAnchor),
-            weatherIcon.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 9)
+            weatherIcon.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant : -18),
+            weatherIcon.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 9),
+            container.layoutMarginsGuide.bottomAnchor.constraint(equalTo: weatherIcon.bottomAnchor)
             ])
         
         let weatherLabel = UILabel()
@@ -68,38 +112,22 @@ extension MainViewController {
             container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: weatherLabel.rightAnchor, constant : 9)
             ])
         
-        let temperatureLabel = UILabel()
-        temperatureLabel.textColor = .white
-        temperatureLabel.text = "0°"
-        temperatureLabel.font = UIFont.systemFont(ofSize: 135)
-        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
-        container.addSubview(temperatureLabel)
+        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: .white)
+        activityIndicator.alpha = 0
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
-            temperatureLabel.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 9),
-            container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: temperatureLabel.rightAnchor, constant : 9),
-            temperatureLabel.topAnchor.constraint(equalTo: weatherIcon.bottomAnchor, constant : -18)
+            container.layoutMarginsGuide.rightAnchor.constraint(equalTo: activityIndicator.rightAnchor, constant : 9),
+            activityIndicator.centerYAnchor.constraint(equalTo: container.centerYAnchor)
             ])
         
-        let cityLabel = UILabel()
-        cityLabel.textColor = .white
-        cityLabel.text = "City"
-        cityLabel.font = UIFont.systemFont(ofSize: 16)
-        cityLabel.translatesAutoresizingMaskIntoConstraints = false
-        container.addSubview(cityLabel)
-        NSLayoutConstraint.activate([
-            cityLabel.leftAnchor.constraint(equalTo: container.layoutMarginsGuide.leftAnchor, constant : 18),
-            container.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: cityLabel.rightAnchor, constant : 9),
-            cityLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant : -18),
-            container.layoutMarginsGuide.bottomAnchor.constraint(equalTo: cityLabel.bottomAnchor)
-            ])
-        return (container, weatherIcon, weatherLabel, temperatureLabel, cityLabel)
+        return (container, weatherIcon, weatherLabel, temperatureLabel, cityLabel, dateLabel, activityIndicator)
     }
     
     func createNavigationBar(drawer dAction : Selector, search sAction : Selector) -> UINavigationBar {
         let navBar = UINavigationBar()
         
         let navItem = UINavigationItem()
-        
         let dButton = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 36, height: 36))
         dButton.setImage(#imageLiteral(resourceName: "ic_burger_menu"), for: .normal)
         dButton.imageEdgeInsets = UIEdgeInsets.init(top: 9, left: 0, bottom: 9, right: 23)
@@ -120,6 +148,7 @@ extension MainViewController {
         navBar.isTranslucent = true
         navBar.backgroundColor = UIColor.clear
         navBar.tintColor = UIColor.white
+        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white , NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)]
         navBar.translatesAutoresizingMaskIntoConstraints = false
         
         let topView = TranslucentView()

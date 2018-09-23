@@ -11,7 +11,7 @@ import UIKit
 
 class TranslucentView: UIView {
     
-    var translucentColor: UIColor = UIColor.black.withAlphaComponent(0.18)
+    var translucentColor: UIColor = UIColor.black.withAlphaComponent(0.27)
     
     override class var layerClass: AnyClass { return CAGradientLayer.self }
     var gradientLayer: CAGradientLayer { return layer as! CAGradientLayer }

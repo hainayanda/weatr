@@ -10,6 +10,8 @@
 		0C0C68104BC6E72F730565AA /* Pods_weatrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82910C430FB7F31C09A09D3 /* Pods_weatrTests.framework */; };
 		19BDD727224FE2AA8BB1949B /* Pods_weatr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D290521C47A87DE3077B6F7 /* Pods_weatr.framework */; };
 		BB2199332157F2B300572546 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */; };
+		BB219935215801C300572546 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB219934215801C300572546 /* SearchViewController.swift */; };
+		BB2199372158106D00572546 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2199362158106D00572546 /* SearchResultTableViewCell.swift */; };
 		BB7D2F1E21567BBD00D89D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */; };
 		BB7D2F2521567BBE00D89D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2421567BBE00D89D16 /* Assets.xcassets */; };
 		BB7D2F2821567BBE00D89D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7D2F2621567BBE00D89D16 /* LaunchScreen.storyboard */; };
@@ -62,6 +64,8 @@
 		A3A3E7F4C3B9502EF4AC5B52 /* Pods-weatr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatr.release.xcconfig"; path = "Target Support Files/Pods-weatr/Pods-weatr.release.xcconfig"; sourceTree = "<group>"; };
 		B2E9B850024A082BC8542BAD /* Pods-weatr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatr.debug.xcconfig"; path = "Target Support Files/Pods-weatr/Pods-weatr.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
+		BB219934215801C300572546 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BB2199362158106D00572546 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		BB7D2F1A21567BBD00D89D16 /* weatr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7D2F1D21567BBD00D89D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7D2F2421567BBE00D89D16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				BB7D2F512156AF1F00D89D16 /* MainViewSetup.swift */,
 				BB7D2F5D2157585300D89D16 /* MainViewLocationManager.swift */,
 				BB7D2F5F21575A7B00D89D16 /* MainViewApiManager.swift */,
+				BB219934215801C300572546 /* SearchViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 			children = (
 				BB7D2F752157A3A000D89D16 /* HourlyForecastTableCell.swift */,
 				BB2199322157F2B300572546 /* DailyForecastTableViewCell.swift */,
+				BB2199362158106D00572546 /* SearchResultTableViewCell.swift */,
 			);
 			path = table;
 			sourceTree = "<group>";
@@ -551,7 +557,9 @@
 				BB7D2F6021575A7B00D89D16 /* MainViewApiManager.swift in Sources */,
 				BB7D2F7A2157A8B600D89D16 /* HourlyForecastCollectionCell.swift in Sources */,
 				BB7D2F68215761A400D89D16 /* WeatherForecastSummary.swift in Sources */,
+				BB219935215801C300572546 /* SearchViewController.swift in Sources */,
 				BB7D2F762157A3A000D89D16 /* HourlyForecastTableCell.swift in Sources */,
+				BB2199372158106D00572546 /* SearchResultTableViewCell.swift in Sources */,
 				BB7D2F522156AF1F00D89D16 /* MainViewSetup.swift in Sources */,
 				BB2199332157F2B300572546 /* DailyForecastTableViewCell.swift in Sources */,
 				BB7D2F7C2157B90300D89D16 /* Utilities.swift in Sources */,

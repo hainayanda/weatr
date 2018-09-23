@@ -16,7 +16,7 @@ class PlaceAPIManager {
     //google place API
     private let API_KEY = "AIzaSyBc6mgzOcT_m_dlI8iEWRUagevgJIjQs70"
     
-    private var client : GMSPlacesClient
+    public var client : GMSPlacesClient
     
     init() {
         GMSPlacesClient.provideAPIKey(API_KEY)

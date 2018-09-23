@@ -78,12 +78,14 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
     
     // SELECTOR
     
-    @objc func onDrawerClick(_ sender : UIBarButtonItem){
+    @objc func onOptionsClicked(_ sender : UIBarButtonItem){
         
     }
     
     @objc func onSearchClick(_ sender : UIBarButtonItem){
-        
+        let searchController = SearchViewController()
+        searchController.modalPresentationStyle = .overCurrentContext
+        present(searchController, animated: true, completion: nil)
     }
     
     // TABLEVIEW DATASOURCE & DELEGATE
@@ -173,7 +175,7 @@ class MainViewController : UIViewController , UIScrollViewDelegate, UITableViewD
         tableOfContent.dataSource = self
         tableOfContent.delegate = self
         
-        navigationBar = createNavigationBar(drawer: #selector(onDrawerClick(_:)), search: #selector(onSearchClick(_:)))
+        navigationBar = createNavigationBar(options: #selector(onOptionsClicked(_:)), search: #selector(onSearchClick(_:)))
         
     }
     

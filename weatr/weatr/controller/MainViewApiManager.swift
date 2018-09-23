@@ -8,8 +8,35 @@
 
 import Foundation
 import Eatr
+import GooglePlaces
 
 extension MainViewController : EatrDelegate {
+    
+    func loadByPlaceId(placeId : String){
+        locationManager.stopUpdatingLocation()
+        labelLoadingView.startAnimating()
+        loadingView.startAnimating()
+        UIView.animate(withDuration: 0.2) {
+            self.loadingView.alpha = 1
+            self.blurBackground.alpha = 1
+            self.labelLoadingView.alpha = 1
+        }
+        placeApiManager.client.lookUpPlaceID(placeId) { (place, e) in
+            guard let place : GMSPlace = place else {
+                DispatchQueue.main.async {
+                    // SHOW ERROR
+                    
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.labelLoadingView.alpha = 0
+                    }) { (_) in
+                        self.labelLoadingView.stopAnimating()
+                    }
+                }
+                return
+            }
+            self.weatherApiManager.getForecast(in: place.coordinate, unit: self.unit, delegate: self)
+        }
+    }
     
     func loadPlacePicture(placeName : String){
         placeApiManager.getPhoto(of: placeName) { (image, e) in

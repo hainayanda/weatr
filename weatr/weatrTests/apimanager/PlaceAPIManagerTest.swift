@@ -15,7 +15,6 @@ import GooglePlaces
 class PlaceAPIManagerTest : XCTestCase {
     
     let defaultLocation = CLLocationCoordinate2D.init(latitude: -6.21462, longitude: 106.84513) //JAKARTA
-    let dGroup : DispatchGroup = DispatchGroup.init()
     
     var apiManager : PlaceAPIManager?
     var predictions : [GMSAutocompletePrediction]?
@@ -32,27 +31,20 @@ class PlaceAPIManagerTest : XCTestCase {
     }
     
     func testQuery() {
-        dGroup.enter()
         apiManager?.getPlaces(by: "Jakarta", callback: { (predictions, _) in
-            self.predictions = predictions
-            self.dGroup.leave()
+            guard let _ : [GMSAutocompletePrediction] = predictions else {
+                assertionFailure("Failed to get prediction")
+                return
+            }
         })
-        dGroup.wait(timeout: DispatchTime.now() + 30)
-        guard let _ : [GMSAutocompletePrediction] = predictions else {
-            assertionFailure("Failed to get prediction")
-            return
-        }
     }
     
     func testGetImage(){
-        dGroup.enter()
         apiManager?.getPhoto(of: "Jakarta", onComplete: { (image, _) in
-            self.image = image
+            guard let _ : UIImage = image else {
+                assertionFailure("Failed to get image")
+                return
+            }
         })
-        dGroup.wait(timeout: DispatchTime.now() + 30)
-        guard let _ : UIImage = image else {
-            assertionFailure("Failed to get image")
-            return
-        }
     }
 }

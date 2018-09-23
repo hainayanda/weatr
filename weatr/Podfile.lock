@@ -1,0 +1,26 @@
+PODS:
+  - Eatr (0.1.4):
+    - HandyJSON (~> 4.1.1)
+  - HandyJSON (4.1.3)
+  - Nativefier (0.1.2):
+    - HandyJSON (~> 4.1.1)
+
+DEPENDENCIES:
+  - Eatr
+  - HandyJSON
+  - Nativefier
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Eatr
+    - HandyJSON
+    - Nativefier
+
+SPEC CHECKSUMS:
+  Eatr: 8ba417649a230271a72dac940dafd3e2e87f68bd
+  HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
+  Nativefier: 9a44c5bc73fdfba19905af467e2340f4666c4631
+
+PODFILE CHECKSUM: 5643cd0e67b9fcc183244e87dda4dc20afeaad1d
+
+COCOAPODS: 1.6.0.beta.1
